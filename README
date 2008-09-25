@@ -1,0 +1,6 @@
+Here are a number of scout plugins that we have developed for our use.
+
+Reliable Msg Queue Stats
+==========================
+This plugin generates instantaneous stats on the reliabable message queue status. Currently
+the only stat that is collected is a count of the number of items in each queue.
