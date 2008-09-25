@@ -1,4 +1,4 @@
-class ReliableMsgQueueStats < Scout::Plugin
+class ReliableMsgStats < Scout::Plugin
   needs 'mysql'
 
   def build_report
