@@ -12,8 +12,11 @@ class ReliableMsgStats < Scout::Plugin
     mysql = Mysql.connect(host, user, password, database, port.to_i, socket)
     results = mysql.query('SELECT queue, count(1) from reliable_msg_queues group by queue')
 
+    report_data = {}
     results.each do |row|
-      report(row[0] => row[1].to_i)
+      report_data[row[0]] = row[1].to_i
     end
+
+    report(report_data)
   end
 end
