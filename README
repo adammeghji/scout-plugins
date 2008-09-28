@@ -4,3 +4,7 @@ Reliable Msg Stats
 ==========================
 This plugin generates instantaneous stats on the reliable message service. Currently
 the only stat that is collected is a count of the number of items in each queue.
+
+SMS Stats
+==========================
+This plugin generates stats on historical messaging activity.
