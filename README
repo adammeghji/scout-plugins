@@ -7,4 +7,5 @@ the only stat that is collected is a count of the number of items in each queue.
 
 SMS Stats
 ==========================
-This plugin generates stats on historical messaging activity.
+This plugin generates stats on historical messaging activity. This isn't generally
+interesting, unless you happen to work for Interactive Mediums.
