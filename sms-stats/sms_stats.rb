@@ -11,7 +11,8 @@ class SmsStats < Scout::Plugin
 
     mysql = Mysql.connect(host, user, password, database, port.to_i, socket)
     results = mysql.query <<-SQL
-      select sum(if(message_type='MT' and error_code is null,1,0)) as mt, sum(if(message_type='MO',1,0)) as mo,
+      select sum(if(message_type='MT' and error_code is null,1,0)) as mt,
+             sum(if(message_type='MO',1,0)) as mo,
              sum(if(message_type = 'MT' and error_code is not null,1,0)) as failed_mt,
              avg(transaction_time) as avg_transaction_time,
              avg(aggregator_time) as avg_aggregator_time
