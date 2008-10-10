@@ -1,3 +1,21 @@
+# Custom monitoring of Interactive Mediums SMS system.
+#
+# The following statistics are calculated (for the last five minutes of traffic):
+#
+# MT:: The number of Mobile Terminated (aka, outgoing) messages sent.
+# MO:: The number of Mobile Originated (aka, incoming) messages recevied.
+# Failed MTs::
+#      The number of MTs that were not sent due to a failure
+#      from the aggregator.
+# Average Transaction Time::
+#      The average latency (in seconds) for processing a text message
+#      transaction. In other words, this is the total time spent in
+#      our system. TM transactions originate either from received MOs
+#      (user requests) or system generated MTs (scheduled messages).
+#      This average is across all types.
+# Average Aggregator Time::
+#      The average latency (in seconds) that the aggregator took to
+#      process the outgoing MT.
 class SmsStats < Scout::Plugin
   needs 'mysql'
 
