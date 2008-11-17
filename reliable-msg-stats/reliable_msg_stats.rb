@@ -17,7 +17,7 @@ class ReliableMsgStats < Scout::Plugin
     alert_data = []
     results.each do |row|
       report_data[row[0]] = row[1].to_i
-      alert_data << {:subject => "Maximum Queue Size Exceeded for Queue: #{row[0]} - Size: #{row[1]}"} if row[1].to_i >= max_queue_size.to_i && row[0] != '$dlq'
+      alert_data << {:subject => "Maximum Queue Size Exceeded for Queue: #{row[0]} - Size: #{row[1]}"} if row[0] != '$dlq' && row[1].to_i >= max_queue_size.to_i
     end
 
     report(report_data)
