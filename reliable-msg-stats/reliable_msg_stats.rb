@@ -8,13 +8,16 @@ class ReliableMsgStats < Scout::Plugin
     port = option(:port) || 3306
     socket = option(:socket) || '/tmp/mysql.sock'
     database = option(:database)
+    max_queue_size = option(:max_queue_size) || 100
 
     mysql = Mysql.connect(host, user, password, database, port.to_i, socket)
     results = mysql.query('SELECT queue, count(1) from reliable_msg_queues group by queue')
 
     report_data = {}
+    report_data[:alerts] = []
     results.each do |row|
       report_data[row[0]] = row[1].to_i
+      report_data[:alerts] << {:subject => "Maximum Queue Size Exceeded for Queue: #{row[0]} - #{row[1]}"} unless row[0] == '$dlq'
     end
 
     report(report_data)

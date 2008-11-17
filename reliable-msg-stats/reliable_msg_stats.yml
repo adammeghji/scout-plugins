@@ -19,3 +19,6 @@ options:
   database:
     name: Database name
     notes: Specify the name of the database that has the reliable_msg tables
+  max_queue_size:
+    name: Max queue size
+    notes: Specify the max queue size allowed before sending an alert
