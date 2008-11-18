@@ -14,6 +14,7 @@ class ReliableMsgStats < Scout::Plugin
     results = mysql.query('SELECT queue, count(1) from reliable_msg_queues group by queue')
 
     report_data = {}
+    report_data[:holder] = 1
     results.each do |row|
       report_data[row[0]] = row[1].to_i
       alert("Maximum Queue Size Exceeded for Queue: #{row[0]} - Size: #{row[1]}") if row[0] != '$dlq' && row[1].to_i >= max_queue_size.to_i
