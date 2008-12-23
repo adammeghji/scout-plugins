@@ -1,0 +1,4 @@
+options:
+  rabbitmqctl:
+    name: The full path to the rabbitmqctl script
+    default: /usr/lib/erlang/lib/rabbitmq_server-1.5.0/sbin/rabbitmqctl

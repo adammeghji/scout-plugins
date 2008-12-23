@@ -1,16 +1,30 @@
 Here are a number of scout plugins that we have developed for our use.
 
-Reliable Msg Stats
-==========================
-This plugin generates instantaneous stats on the reliable message service. Currently
-the only stat that is collected is a count of the number of items in each queue.
+The following plugins are generally applicable, that is they monitor services or
+libraries that are open source or publically available. Feel free to modify this
+code and submit patches/pull requests back.
 
-Mongrel Cluster Memory
-==========================
-This plugin records the memory used by each mongrel instance in a cluster. Configure
-it by supplying the directory that contains the PID files for the mongrels.
+  Reliable Msg Stats
+  ==========================
+  This plugin generates instantaneous stats on the reliable message service. Currently
+  the only stat that is collected is a count of the number of items in each queue.
 
-SMS Stats
-==========================
-This plugin generates stats on historical messaging activity. This isn't generally
-interesting, unless you happen to work for Interactive Mediums.
+  Mongrel Cluster Memory
+  ==========================
+  This plugin records the memory used by each mongrel instance in a cluster. Configure
+  it by supplying the directory that contains the PID files for the mongrels.
+
+  RabbitMQ Overall Usage
+  ==========================
+  This plugin gathers instantaneous metrics about the state of a RabbitMQ server. This
+  plugin depends on the 1.5 version of the rabbitmqctl command.
+
+The next plugins are pretty specific to the Interactive Mediums environment.
+These are unlikely to be usable outside, but feel free to look at the code.
+
+  SMS Stats
+  ==========================
+  This plugin generates stats on historical messaging activity. This isn't generally
+  interesting, unless you happen to work for Interactive Mediums.
+
+
