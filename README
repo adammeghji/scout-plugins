@@ -19,6 +19,11 @@ code and submit patches/pull requests back.
   This plugin gathers instantaneous metrics about the state of a RabbitMQ server. This
   plugin depends on the 1.5 version of the rabbitmqctl command.
 
+  RabbitMQ Queue Details
+  ==========================
+  This plugin gathers instantaneous metrics about the state of a single RabbitMQ queue.
+  This plugin depends on the 1.5 version of the rabbitmqctl command.
+
 The next plugins are pretty specific to the Interactive Mediums environment.
 These are unlikely to be usable outside, but feel free to look at the code.
 
