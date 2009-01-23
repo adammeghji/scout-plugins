@@ -18,17 +18,7 @@ class DaemonClusterMemory < Scout::Plugin
     Dir[File.join(pid_dir, '*.pid')].each do |pid_file|
       process = pid_file.split('_')[1].split('.')[0]
       pid = File.read(pid_file).chomp
-      
-      puts "PID = #{pid}"
-      ps_output.each {|line| 
-        puts "pids = #{line.split[pid_index]} found? #{line.split[pid_index] == pid}"
-        p =line.split[pid_index] 
-        puts "pids = #{p.inspect}  #{p.class} #{pid.inspect} #{pid.class}"
 
-        if p.to_s == pid.to_s
-          puts "line found = #{line}"
-        end
-      }
       ps_line = ps_output.detect {|line| line.split[pid_index] == pid}
       memory = ps_line ? Float(ps_line.split[memory_index]) / 1024 : nil
 
