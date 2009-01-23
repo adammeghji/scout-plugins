@@ -7,7 +7,6 @@ class DaemonClusterMemory < Scout::Plugin
     memory_index = fields.index('rss')
 
     pid_index = fields.index('pid')
-    logger.info("pid_index = #{pid_index}")
 
     pid_dir = @options['pid_dir']
     unless File.exist?(pid_dir)
