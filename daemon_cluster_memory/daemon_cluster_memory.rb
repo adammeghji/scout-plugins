@@ -21,7 +21,7 @@ class DaemonClusterMemory < Scout::Plugin
       
       puts "PID = #{pid}"
       ps_output.each {|line| 
-        puts "pids = #{line.split[pid_index]}"
+        puts "pids = #{line.split[pid_index]} found? #{line.split[pid_index] == pid}"
         p =line.split[pid_index] 
         if p.to_s == pid.to_s
           puts "line found = #{line}"
