@@ -1,0 +1,8 @@
+options:
+  ps_command:
+    name: The Process Status (ps) Command
+    notes: The command with options. The default works on most systems.
+    default: ps axucww
+  pid_dir:
+    name: PID Directory
+    notes: The directory where the daemon pid files are stored.
