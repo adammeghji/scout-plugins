@@ -1,0 +1,8 @@
+options:
+  rabbitmqctl:
+    name: rabbitmqctl command
+    notes: The command used to run the rabbitctl program, minus arguments
+    default: sudo /usr/sbin/rabbitmqctl
+  queue:
+    name: Queue
+    notes: The name of the queue to collect detailed metrics for
