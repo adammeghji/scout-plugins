@@ -5,6 +5,7 @@ class RabbitmqOverall < Scout::Plugin
     rabbitmqctl_script = @options['rabbitmqctl'] ||
                          '/opt/local/lib/erlang/lib/rabbitmq_server-1.5.0/sbin/rabbitmqctl'
     queue_name = @options['queue']
+    vhost = @options['vhost']
 
     unless queue_name
       error("Queue name not specified", "You must specify the queue to get details for.")
@@ -23,7 +24,8 @@ class RabbitmqOverall < Scout::Plugin
 
   private
     def get_queue_stats_line(rabbitmqctl_script, queue_name)
-      all_queue_stats = `#{rabbitmqctl_script} -q list_queues #{QUEUE_INFO_ITEMS.join(' ')}`.to_a
+      cmd = vhost.nil? ? "#{rabbitmqctl_script} -q list_queues " : "#{rabbitmqctl_script} -q list_queues -p '#{vhost}' "
+      all_queue_stats = `#{cmd} #{QUEUE_INFO_ITEMS.join(' ')}`.to_a
       all_queue_stats.detect do |line|
         line.split[0] == queue_name
       end

@@ -6,3 +6,6 @@ options:
   queue:
     name: Queue
     notes: The name of the queue to collect detailed metrics for
+  vhost:
+    name: Virtual host
+    notes: The name of the virtual host to collect detailed metrics for
