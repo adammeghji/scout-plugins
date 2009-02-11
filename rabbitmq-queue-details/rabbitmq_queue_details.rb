@@ -12,7 +12,7 @@ class RabbitmqOverall < Scout::Plugin
       return
     end
 
-    queue_stats_line = get_queue_stats_line(rabbitmqctl_script, queue_name)
+    queue_stats_line = get_queue_stats_line(rabbitmqctl_script, queue_name, vhost)
 
     unless queue_stats_line
       error("\"#{queue_name}\" queue not found", "Please check the queue name for potential errors.")
@@ -23,7 +23,7 @@ class RabbitmqOverall < Scout::Plugin
   end
 
   private
-    def get_queue_stats_line(rabbitmqctl_script, queue_name)
+    def get_queue_stats_line(rabbitmqctl_script, queue_name, vhost)
       cmd = vhost.nil? ? "#{rabbitmqctl_script} -q list_queues " : "#{rabbitmqctl_script} -q list_queues -p '#{vhost}' "
       all_queue_stats = `#{cmd} #{QUEUE_INFO_ITEMS.join(' ')}`.to_a
       all_queue_stats.detect do |line|
