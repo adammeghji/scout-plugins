@@ -34,7 +34,7 @@ class SmsStats < Scout::Plugin
              sum(if(message_type = 'MT' and error_code is not null,1,0)) as failed_mt,
              avg(transaction_time) as avg_transaction_time,
              avg(aggregator_time) as avg_aggregator_time
-        from message_history
+        from recent_messages
        where created_at > DATE_SUB(now(), INTERVAL 5 MINUTE)
     SQL
 
