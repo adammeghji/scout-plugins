@@ -39,6 +39,9 @@ class PassengerMemoryStats < Scout::Plugin
     stats        = { "apache_processes"        => 0,
       "apache_vmsize_total"     => 0.0,
       "apache_private_total"    => 0.0,
+      "nginx_processes"        => 0,
+      "nginx_vmsize_total"     => 0.0,
+      "nginx_private_total"    => 0.0,
       "passenger_processes"     => 0,
       "passenger_vmsize_total"  => 0.0,
       "passenger_private_total" => 0.0 }
@@ -46,7 +49,7 @@ class PassengerMemoryStats < Scout::Plugin
     data.each do |line|
       # strip color
       line = line.gsub(/\e\[\d+m/,'')
-      if line =~ /^\s*-+\s+(Apache|Passenger)\s+processes/
+      if line =~ /^\s*-+\s+(Apache|Passenger|Nginx)\s+processes/
         table        = $1.downcase
         headers      = nil
         field_format = nil
