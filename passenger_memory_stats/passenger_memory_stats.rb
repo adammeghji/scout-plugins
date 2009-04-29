@@ -45,7 +45,7 @@ class PassengerMemoryStats < Scout::Plugin
 
     data.each do |line|
       # strip color
-      line = line.gsub(/\e\[*m/,'')
+      line = line.gsub(/\e\[\d+m/,'')
       if line =~ /^\s*-+\s+(Apache|Passenger)\s+processes/
         table        = $1.downcase
         headers      = nil
