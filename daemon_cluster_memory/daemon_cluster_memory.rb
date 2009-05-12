@@ -9,10 +9,10 @@ class DaemonClusterMemory < Scout::Plugin
     pid_index = fields.index('pid')
 
     pid_dir = option('pid_dir')
-#     unless File.exist?(pid_dir)
-#       error("PID directory not found", "#{pid_dir} was not found on the file system")
-#       return
-#     end
+    unless File.exist?(pid_dir)
+      error("PID directory not found", "#{pid_dir} was not found on the file system")
+      return
+    end
 
     report_data = {}
     Dir[File.join(pid_dir, '*.pid')].each do |pid_file|
