@@ -2,10 +2,10 @@ class RabbitmqOverall < Scout::Plugin
   QUEUE_INFO_ITEMS = %w(name messages_ready messages_unacknowledged messages_uncommitted messages acks_uncommitted consumers transactions memory)
 
   def build_report
-    rabbitmqctl_script = @options['rabbitmqctl'] ||
+    rabbitmqctl_script = option('rabbitmqctl') ||
                          '/opt/local/lib/erlang/lib/rabbitmq_server-1.5.0/sbin/rabbitmqctl'
-    queue_name = @options['queue']
-    vhost = @options['vhost']
+    queue_name = option('queue')
+    vhost = option('vhost')
 
     unless queue_name
       error("Queue name not specified", "You must specify the queue to get details for.")

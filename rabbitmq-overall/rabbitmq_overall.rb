@@ -34,7 +34,7 @@ class RabbitmqOverall < Scout::Plugin
   end
 
   def rabbitmqctl
-    @options['rabbitmqctl'] || '/opt/local/lib/erlang/lib/rabbitmq_server-1.5.0/sbin/rabbitmqctl'
+    option('rabbitmqctl') || '/opt/local/lib/erlang/lib/rabbitmq_server-1.5.0/sbin/rabbitmqctl'
   end
 
   def vhosts
