@@ -1,6 +1,6 @@
 class DaemonClusterMemory < Scout::Plugin
   def build_report
-    ps_command = option['ps_command'] || 'ps axucww'
+    ps_command = option('ps_command') || 'ps axucww'
     ps_output = `#{ps_command}`.to_a
 
     fields = ps_output.first.downcase.split
@@ -8,7 +8,7 @@ class DaemonClusterMemory < Scout::Plugin
 
     pid_index = fields.index('pid')
 
-    pid_dir = option['pid_dir']
+    pid_dir = option('pid_dir')
     unless File.exist?(pid_dir)
       error("PID directory not found", "#{pid_dir} was not found on the file system")
       return
