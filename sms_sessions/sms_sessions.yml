@@ -1,8 +1,4 @@
 options:
-  days_for_old_sessions:
-    name: Days for Old Sessions
-    notes: Sessions older than this amount (in days) will be deleted.
-    default: 30
   path_to_app:
     name: Full Path to Rails Application
     notes: The full path to the Rails application you wish to monitor sessions for. Omit the trailing slash.
