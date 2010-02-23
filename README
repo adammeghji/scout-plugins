@@ -24,6 +24,11 @@ code and submit patches/pull requests back.
   This plugin gathers instantaneous metrics about the state of a single RabbitMQ queue.
   This plugin depends on the 1.5 version of the rabbitmqctl command.
 
+  Rails Session Monitor
+  ==========================
+  A fork of the Highgroove Session Monitor plugin. This version is patched to work with
+  Rails 2.3.4.
+
 The next plugins are pretty specific to the Interactive Mediums environment.
 These are unlikely to be usable outside, but feel free to look at the code.
 
