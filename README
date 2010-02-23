@@ -37,4 +37,6 @@ These are unlikely to be usable outside, but feel free to look at the code.
   This plugin generates stats on historical messaging activity. This isn't generally
   interesting, unless you happen to work for Interactive Mediums.
 
-
+  SMS Sessions
+  ==========================
+  Counts the number of SMS sessions stored in the database.

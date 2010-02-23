@@ -1,0 +1,10 @@
+SMS Session Monitoring Plugin
+=====================
+
+This was forked from Highgroove's Rails Session Monitor plugin.
+
+Functionality
+-------------
+Given a path to a Rails application, this plugin returns the total number of sms_sessions
+and the number of sessions that haven't been updated a specified number of days. 
+
