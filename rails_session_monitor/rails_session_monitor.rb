@@ -15,8 +15,8 @@ class RailsSessionMonitor < Scout::Plugin
                           :body    => "The Days for Old Sessions option must be provided. Sessions older than this amount will be deleted."}}
     end
     # Load the Rails Env
-    require "#{@options['path_to_app']}/config/environment"
-    
+    quietly { require "#{@options['path_to_app']}/config/environment" }
+
     total = ActiveRecord::SessionStore::Session.count
     old = ActiveRecord::SessionStore::Session.count(:conditions => ["updated_at < ?", @options['days_for_old_sessions'].to_i.days.ago ])
     
@@ -29,5 +29,12 @@ class RailsSessionMonitor < Scout::Plugin
   rescue
     { :error => {:subject => "Unable to Monitor Rails Sessions", 
       :body => "The following exception was raised:\n\n#{$!.message}\n\n#{$!.backtrace}"}}
+  end
+
+  def quietly
+    old_verbose, $VERBOSE = $VERBOSE, false
+    yield
+  ensure
+    $VERBOSE = old_verbose
   end
 end
