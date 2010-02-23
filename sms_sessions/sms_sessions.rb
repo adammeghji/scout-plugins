@@ -1,4 +1,4 @@
-class RailsSessionMonitor < Scout::Plugin
+class SmsSessions < Scout::Plugin
   TEST_USAGE = "#{File.basename($0)} path_to_app PATH_TO_APP rails_env RAILS_ENV"
 
   def run
