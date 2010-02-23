@@ -22,7 +22,7 @@ class RailsSessionMonitor < Scout::Plugin
       }
     }
   rescue
-    { :error => {:subject => "Unable to Monitor Rails Sessions", 
+    { :error => {:subject => "Unable to Monitor SMS Sessions", 
       :body => "The following exception was raised:\n\n#{$!.message}\n\n#{$!.backtrace}"}}
   end
 
