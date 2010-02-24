@@ -23,7 +23,7 @@ metadata:
     delimiter: ","
     precision: "0"
     label: Queue Memory Used
-  connections:
+  exchanges:
     units: "exchanges"
     larger_is_better: "1"
     delimiter: ","
