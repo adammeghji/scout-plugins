@@ -1,9 +1,22 @@
 class RabbitmqOverall < Scout::Plugin
+  OPTIONS = <<-EOS
+  rabbitmqctl:
+    name: rabbitmqctl command
+    notes: The command used to run the rabbitctl program, minus arguments
+    default: rabbitmqctl
+  queue:
+    name: Queue
+    notes: The name of the queue to collect detailed metrics for
+  vhost:
+    name: Virtual host
+    notes: The name of the virtual host to collect detailed metrics for
+    default: /
+  EOS
+
   QUEUE_INFO_ITEMS = %w(name messages_ready messages_unacknowledged messages_uncommitted messages acks_uncommitted consumers transactions memory)
 
   def build_report
-    rabbitmqctl_script = option('rabbitmqctl') ||
-                         '/opt/local/lib/erlang/lib/rabbitmq_server-1.5.0/sbin/rabbitmqctl'
+    rabbitmqctl_script = option('rabbitmqctl')
     queue_name = option('queue')
     vhost = option('vhost')
 
@@ -38,6 +51,11 @@ class RabbitmqOverall < Scout::Plugin
       QUEUE_INFO_ITEMS.each_with_index do |item, i|
         next if item == 'name'
         report_data[item] = queue_stats[i]
+
+        if item == 'memory'
+          # Convert from bytes to megabytes
+          report_data[item] = report_data[item].to_f / (1024 * 1024)
+        end
       end
       report_data
     end

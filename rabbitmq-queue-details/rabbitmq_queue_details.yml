@@ -1,11 +1,49 @@
-options:
-  rabbitmqctl:
-    name: rabbitmqctl command
-    notes: The command used to run the rabbitctl program, minus arguments
-    default: sudo /usr/sbin/rabbitmqctl
-  queue:
-    name: Queue
-    notes: The name of the queue to collect detailed metrics for
-  vhost:
-    name: Virtual host
-    notes: The name of the virtual host to collect detailed metrics for
+metadata:
+  messages_ready:
+    units: "msg"
+    larger_is_better: "1"
+    delimiter: ","
+    precision: "0"
+    label: Messages Ready
+  messages_unacknowledged:
+    units: "msg"
+    larger_is_better: "1"
+    delimiter: ","
+    precision: "0"
+    label: Messages Unacked
+  messages_uncommitted:
+    units: "msg"
+    larger_is_better: "1"
+    delimiter: ","
+    precision: "0"
+    label: Messages Uncommitted
+  messages:
+    units: "msg"
+    larger_is_better: "1"
+    delimiter: ","
+    precision: "0"
+    label: Messages
+  acks_uncommitted:
+    units: "acks"
+    larger_is_better: "1"
+    delimiter: ","
+    precision: "0"
+    label: Acks Uncommitted
+  consumers:
+    units: "consumers"
+    larger_is_better: "1"
+    delimiter: ","
+    precision: "0"
+    label: Consumers
+  transactions:
+    units: "txns"
+    larger_is_better: "1"
+    delimiter: ","
+    precision: "0"
+    label: Transactions
+  memory:
+    units: "MB"
+    larger_is_better: "1"
+    delimiter: ","
+    precision: "2"
+    label: Memory
