@@ -43,7 +43,7 @@ class AggregatorStats < Scout::Plugin
       SQL
 
       results.each_hash do |row|
-        report('Name' => row['name']
+        report('Name' => row['name'],
                :CM => row['cm'] || 0, 
                :MO => row['mo'] || 0, 
                'Total MTs' => row['total_mt'] || 0,
