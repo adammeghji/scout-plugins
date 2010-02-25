@@ -38,8 +38,7 @@ class AggregatorStats < Scout::Plugin
                avg(rm.aggregator_time) as avg_aggregator_time 
           from recent_messages rm 
           join aggregators a on a.id = rm.aggregator_id 
-          where rm.created_at > #{last_run.strftime(DB_FORMAT)} 
-          group by a.name
+          where rm.created_at > '#{last_run.strftime(DB_FORMAT)}' group by a.name
       SQL
 
       results.each_hash do |row|
