@@ -25,11 +25,11 @@ class AggregatorStats < Scout::Plugin
       port = option(:port) || 3306
       socket = option(:socket) || '/tmp/mysql.sock'
       database = option(:database)
+      aggregator_code = option(:aggregator_code)
 
       mysql = Mysql.connect(host, user, password, database, port.to_i, socket)
       results = mysql.query <<-SQL
-        select a.name as name, 
-               sum(if(rm.message_type='FU',1,0)) as fu,
+        select sum(if(rm.message_type='FU',1,0)) as fu,
                sum(if(rm.message_type='CM',1,0)) as cm,
                sum(if(rm.message_type='MO',1,0)) as mo,
                sum(if(rm.message_type = 'MT',1,0)) as total_mt,
@@ -38,12 +38,12 @@ class AggregatorStats < Scout::Plugin
                avg(rm.aggregator_time) as avg_aggregator_time 
           from recent_messages rm 
           join aggregators a on a.id = rm.aggregator_id 
-          where rm.created_at > '#{last_run.strftime(DB_FORMAT)}' group by a.name
+          where rm.created_at > '#{last_run.strftime(DB_FORMAT)}' 
+            and a.code = '#{aggregator_code}'
       SQL
 
       results.each_hash do |row|
-        report('Name' => row['name'],
-               :CM => row['cm'] || 0, 
+        report(:CM => row['cm'] || 0, 
                :MO => row['mo'] || 0, 
                'Total MTs' => row['total_mt'] || 0,
                'Success MTs' => row['success_mt'] || 0,

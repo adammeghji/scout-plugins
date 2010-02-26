@@ -19,3 +19,6 @@ options:
   database:
     name: Database name
     notes: Specify the name of the database that has the messaging tables
+  aggregator_code:
+    name: Aggregator Code
+    notes: Specify the aggregator code to collect stats for 
