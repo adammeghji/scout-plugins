@@ -37,12 +37,9 @@ class MonitorBackgroundJob < Scout::Plugin
     ActiveRecord::Base.establish_connection(db_config[option(:rails_env)])
         
     # Count jobs by state
-    report_hash = Hash[BjJob.count(:state, :group => :state)]
+    report_hash = {'finished' => 0, 'running' => 0, 'pending' => 0, 'dead' => 0}
+    report_hash.merge!(Hash[BjJob.count(:state, :group => :state)])
     report_hash['failed'] = BjJob.count(:conditions => 'state = "finished" and exit_status != 0')
-    report_hash['finished'] ||=
-      report_hash['running'] ||=
-      report_hash['pending'] ||=
-      report_hash['dead'] ||= 0
     
     report(report_hash)
   end
