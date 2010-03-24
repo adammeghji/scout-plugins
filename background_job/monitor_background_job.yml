@@ -1,0 +1,31 @@
+metadata: 
+  finished:
+    units: "jobs"
+    larger_is_better: "1"
+    delimiter: ","
+    precision: "0"
+    label: Finished
+  running:
+    units: "jobs"
+    larger_is_better: "1"
+    delimiter: ","
+    precision: "0"
+    label: Running
+  pending:
+    units: "jobs"
+    larger_is_better: "1"
+    delimiter: ","
+    precision: "0"
+    label: Pending
+  dead: 
+    units: "jobs"
+    larger_is_better: "1"
+    delimiter: ","
+    precision: "0"
+    label: Dead
+  failed: 
+    units: "jobs"
+    larger_is_better: "1"
+    delimiter: ","
+    precision: "0"
+    label: Failed
