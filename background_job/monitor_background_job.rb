@@ -39,10 +39,10 @@ class MonitorBackgroundJob < Scout::Plugin
     # Count jobs by state
     report_hash = Hash[BjJob.count(:state, :group => :state)]
     report_hash['failed'] = BjJob.count(:conditions => 'state = "finished" and exit_status != 0')
-    report_hash['finished'] =
-      report_hash['running'] =
-      report_hash['pending'] =
-      report_hash['dead'] = 0
+    report_hash['finished'] ||=
+      report_hash['running'] ||=
+      report_hash['pending'] ||=
+      report_hash['dead'] ||= 0
     
     report(report_hash)
   end
