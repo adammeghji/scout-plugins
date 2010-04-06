@@ -11,9 +11,9 @@ class PassengerRailsMemory < Scout::Plugin
     report_data = {}
     report_data["count"] = data.size
     memory = []
-    data.each { | instance | 
+    data.each { | instance |
        fields = instance.split
-       memory << fields[2].to_f
+       memory << fields[1].to_f
     }
 
     report_data["total memory (MB)"] = memory.inject(0){|sum,item| sum + item}
