@@ -41,7 +41,7 @@ class SmsStats < Scout::Plugin
                avg(transaction_time) as avg_transaction_time,
                avg(aggregator_time) as avg_aggregator_time
           from recent_messages
-         where created_at > '#{last_run.strftime(DB_FORMAT)}'
+         where created_at > '#{last_run.utc.strftime(DB_FORMAT)}'
       SQL
 
       results.each_hash do |row|
