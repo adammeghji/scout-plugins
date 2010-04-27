@@ -1,4 +1,4 @@
-class RabbitmqOverall < Scout::Plugin
+class RabbitmqQueueDetails < Scout::Plugin
   OPTIONS = <<-EOS
   rabbitmqctl:
     name: rabbitmqctl command
