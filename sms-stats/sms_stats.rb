@@ -44,6 +44,11 @@ class SmsStats < Scout::Plugin
          where created_at > '#{last_run.utc.strftime(DB_FORMAT)}'
       SQL
 
+      if option(:scheduled_messages).blank?
+        results += " and scheduled_message_id is null"
+      else
+        results += " and scheduled_message_id is not null"
+      end
       results.each_hash do |row|
         report(:MT => row['mt'] || 0, :MO => row['mo'] || 0,
                'Failed MTs' => row['failed_mt'] || 0,

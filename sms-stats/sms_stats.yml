@@ -19,3 +19,6 @@ options:
   database:
     name: Database name
     notes: Specify the name of the database that has the messaging tables
+  scheduled_message:
+    name:  Scheduled messages?
+    notes: Leave blank to report on non scheduled messages. Provide a value to report on scheduled messages
