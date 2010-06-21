@@ -44,7 +44,7 @@ class SmsStats < Scout::Plugin
          where created_at > '#{last_run.utc.strftime(DB_FORMAT)}'
       SQL
 
-      if option(:scheduled_messages).blank?
+      if option(:scheduled_messages).nil?
         results += " and scheduled_message_id is null"
       else
         results += " and scheduled_message_id is not null"
