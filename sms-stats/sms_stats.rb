@@ -34,6 +34,7 @@ class SmsStats < Scout::Plugin
       database = option(:database)
 
       mysql = Mysql.connect(host, user, password, database, port.to_i, socket)
+      scheduled = option(:scheduled_messages).nil? ? " " : "not"
       results = mysql.query <<-SQL
         select sum(if(message_type='MT' and error_code is null,1,0)) as mt,
                sum(if(message_type='MO',1,0)) as mo,
@@ -42,13 +43,9 @@ class SmsStats < Scout::Plugin
                avg(aggregator_time) as avg_aggregator_time
           from recent_messages
          where created_at > '#{last_run.utc.strftime(DB_FORMAT)}'
+        and and scheduled_message_id is #{scheduled} null
       SQL
 
-      if option(:scheduled_messages).nil?
-        results += " and scheduled_message_id is null"
-      else
-        results += " and scheduled_message_id is not null"
-      end
       results.each_hash do |row|
         report(:MT => row['mt'] || 0, :MO => row['mo'] || 0,
                'Failed MTs' => row['failed_mt'] || 0,
