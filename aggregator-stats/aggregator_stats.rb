@@ -38,7 +38,8 @@ class AggregatorStats < Scout::Plugin
                avg(rm.aggregator_time) as avg_aggregator_time 
           from recent_messages rm 
           join aggregators a on a.id = rm.aggregator_id 
-          where rm.created_at > '#{last_run.utc.strftime(DB_FORMAT)}' 
+          where rm.created_at > '#{last_run.utc.strftime(DB_FORMAT)}'
+            and rm.txn_id is not null
             and a.code = '#{aggregator_code}'
       SQL
 
