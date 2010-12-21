@@ -17,9 +17,11 @@ class CouchDBServerStatusPlugin < Scout::Plugin
     response = JSON.parse(Net::HTTP.get(URI.parse(base_url)))
     report(:version => response['version'])
 
-    stats = %w{min max stddev mean}
-    response = JSON.parse(Net::HTTP.get(URI.parse(base_url + "_stats")))
+    stats = %w{count mean max stddev}
+    response = JSON.parse(Net::HTTP.get(URI.parse(base_url + "_stats/httpd/requests?range=60")))
     stats.each { |stat| report("requests_#{stat}".to_sym => response['httpd']['requests'].ergo[stat]) }
+
+    response = JSON.parse(Net::HTTP.get(URI.parse(base_url + "_stats/couchdb/request_time?range=60")))
     stats.each { |stat| report("request_time_#{stat}".to_sym => response['couchdb']['request_time'][stat]) }
   end
 
