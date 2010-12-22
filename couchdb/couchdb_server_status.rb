@@ -22,11 +22,11 @@ class CouchDBServerStatusPlugin < Scout::Plugin
     report(:version => version)
 
     if version.to_f >= 0.11
-      stats = %w{sum mean max stddev}
-
+      stats = %w{mean max min stddev}
       response = JSON.parse(Net::HTTP.get(URI.parse(base_url + "_stats/couchdb/request_time?range=#{option(:stats_range)}")))
       stats.each { |stat| report("request_time_#{stat}".to_sym => response['couchdb']['request_time'][stat]) }
 
+      stats = %w{sum mean max stddev}
       response = JSON.parse(Net::HTTP.get(URI.parse(base_url + "_stats/couchdb/database_reads?range=#{option(:stats_range)}")))
       stats.each { |stat| report("database_reads_#{stat}".to_sym => response['couchdb']['database_reads'].ergo[stat] || 0) }
 

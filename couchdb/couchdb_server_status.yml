@@ -1,17 +1,28 @@
 metadata:
   version:
     label: CouchDB Version
+  request_time_mean:
+    label: Mean request time
+    units: milliseconds
+  request_time_max:
+    label: Max request time
+    units: milliseconds
+  request_time_min:
+    label: Min request time
+    units: milliseconds
+  request_time_stddev:
+    label: Request time standard deviation
   database_reads_sum:
     label: Database read count
     units: reads
     precision: "1"
   database_reads_mean:
-    label: Mean database read count
-    units: reads
+    label: Mean database read count/second
+    units: reads/second
     precision: "1"
   database_reads_max:
-    label: Max database read count
-    units: reads
+    label: Max database read count/second
+    units: reads/second
     precision: "1"
   database_reads_stddev:
     label: Database read count standard deviation
@@ -20,12 +31,12 @@ metadata:
     units: writes
     precision: "1"
   database_writes_mean:
-    label: Mean database write count
-    units: writes
+    label: Mean database write count/second
+    units: writes/second
     precision: "1"
   database_writes_max:
-    label: Max database write count
-    units: writes
+    label: Max database write count/second
+    units: writes/second
     precision: "1"
   database_writes_stddev:
     label: Database write count standard deviation

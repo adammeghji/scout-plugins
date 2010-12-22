@@ -1,0 +1,12 @@
+metadata:
+  httpd_request_methods_GET_sum:
+    label: Total GET requests
+    units: requests
+  httpd_request_methods_GET_mean:
+    label: Mean GET requests/second
+    units: requests/sec
+  httpd_request_methods_GET_max:
+    label: Max GET requests/second
+    units: requests/sec
+  httpd_request_methods_GET_stddev:
+    label: GET request standard deviation
