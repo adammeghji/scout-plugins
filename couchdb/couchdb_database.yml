@@ -1,0 +1,16 @@
+metadata:
+  doc_count:
+    label: Number of documents in the database
+    units: documents
+  doc_del_count:
+    label: Number of deleted documents
+    units: documents
+  disk_size:
+    label: Size of the data as stored on the disk. Views indexes are not included in the calculation. 
+    units: bytes
+  purge_seq:
+    label: The number of purge operations on the database 
+    units: purge operations
+  update_seq:
+    label: The current number of updates to the database.
+    units: updates
