@@ -1,4 +1,4 @@
-class CouchDBHttpStatsPlugin < Scout::Plugin
+class CouchDBLucenePlugin < Scout::Plugin
 
   OPTIONS = <<-EOS
     couchdb_port:
@@ -8,7 +8,9 @@ class CouchDBHttpStatsPlugin < Scout::Plugin
       label: The host that CouchDB is running on
       default: http://127.0.0.1
     database_name:
-      label: The name of the database you wish to get stats for
+      label: The name of the database containing the lucene index
+    index_name:
+      label: The name of the design document and the view of the lucene index (eg: "search/index")
   EOS
 
   needs 'net/http', 'json'
@@ -16,11 +18,9 @@ class CouchDBHttpStatsPlugin < Scout::Plugin
   def build_report
     base_url = "#{option(:couchdb_host)}:#{option(:couchdb_port)}/"
 
-    response = JSON.parse(Net::HTTP.get(URI.parse(base_url + option(:database_name))))
+    response = JSON.parse(Net::HTTP.get(URI.parse("#{base_url}#{option(:database_name)}/_fti/_design/#{option(:index_name)}")))
+    report(:disk_size => response['disk_size'] || 0)
     report(:doc_count => response['doc_count'] || 0)
     report(:doc_del_count => response['doc_del_count'] || 0)
-    report(:disk_size => response['disk_size'] || 0)
-    report(:purge_seq => response['purge_seq'] || 0)
-    report(:update_seq => response['update_seq'] || 0)
   end
 end
