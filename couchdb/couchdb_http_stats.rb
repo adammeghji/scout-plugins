@@ -1,4 +1,4 @@
-class CouchDBHttpdPlugin < Scout::Plugin
+class CouchDBHttpStatsPlugin < Scout::Plugin
 
   OPTIONS = <<-EOS
     couchdb_port:
