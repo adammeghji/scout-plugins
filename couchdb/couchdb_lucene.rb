@@ -19,8 +19,12 @@ class CouchDBLucenePlugin < Scout::Plugin
     base_url = "#{option(:couchdb_host)}:#{option(:couchdb_port)}/"
 
     response = JSON.parse(Net::HTTP.get(URI.parse("#{base_url}#{option(:database_name)}/_fti/_design/#{option(:index_name)}")))
-    report(:disk_size => response['disk_size'] || 0)
+    report(:disk_size => b_to_mb(response['disk_size']) || 0)
     report(:doc_count => response['doc_count'] || 0)
     report(:doc_del_count => response['doc_del_count'] || 0)
+  end
+
+  def b_to_mb(bytes)
+    bytes && bytes / 1024 / 1024
   end
 end

@@ -9,7 +9,7 @@ metadata:
     precision: "0"
   disk_size:
     label: Database size
-    units: bytes
+    units: MB
   purge_seq:
     label: Purge operations
     units: purge operations

@@ -9,4 +9,4 @@ metadata:
     precision: "0"
   disk_size:
     label: Index size
-    units: bytes
+    units: MB

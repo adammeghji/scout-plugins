@@ -19,8 +19,12 @@ class CouchDBHttpStatsPlugin < Scout::Plugin
     response = JSON.parse(Net::HTTP.get(URI.parse(base_url + option(:database_name))))
     report(:doc_count => response['doc_count'] || 0)
     report(:doc_del_count => response['doc_del_count'] || 0)
-    report(:disk_size => response['disk_size'] || 0)
+    report(:disk_size => b_to_mb(response['disk_size']) )|| 0)
     report(:purge_seq => response['purge_seq'] || 0)
     report(:update_seq => response['update_seq'] || 0)
+  end
+  
+  def b_to_mb(bytes)
+    bytes && bytes / 1024 / 1024
   end
 end
