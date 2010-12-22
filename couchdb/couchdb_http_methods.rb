@@ -37,5 +37,4 @@ class CouchDBHttpMethodsPlugin < Scout::Plugin
       end
     end
   end
-
 end
