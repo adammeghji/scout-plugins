@@ -10,7 +10,7 @@ class CouchDBLucenePlugin < Scout::Plugin
     database_name:
       label: The name of the database containing the lucene index
     index_name:
-      label: The name of the design document and the view of the lucene index (eg: "search/index")
+      label: The name of the design document and the view of the lucene index. ("search/index" for example)
   EOS
 
   needs 'net/http', 'json'
