@@ -8,6 +8,7 @@ This directory contains a series of [Scout](http://scoutapp.com) plugins that ca
 * **CouchDBHttpMethodsPlugin** - Reports stats on GET, POST, PUT, DELETE, and HEAD requests
 * **CouchDBHttpResponsesPlugin** - Reports counts of the various HTTP status codes returned by CouchDB
 * **CouchDBHttpStatsPlugin** - Reports stats on HTTP requests, bulk requests, view reads, and the number of clients requesting _changes
+* **CouchDBDatabasePlugin** - Reports stats on an individual database, including document count, size on disk, and more
 
 ## Scout Setup
 All plugins allow you to specify your CouchDB Host and port in the plugin settings.  A **Status Range** setting is also used for CouchDB versions >= 0.11.
