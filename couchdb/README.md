@@ -13,7 +13,7 @@ This directory contains a series of [Scout](http://scoutapp.com) plugins that ca
 
 ## Scout Setup
 All plugins allow you to specify your CouchDB Host and port in the plugin settings.  A **Status Range** setting is also used for CouchDB versions >= 0.11.
-The value of this setting is in seconds, and should match the Scout report interval you configure for the plugin.
+The value of this setting is in seconds (values values are 60, 300, or 900), and should match the Scout report interval you configure for the plugin.
 
 ## CouchDB Versions
 
