@@ -28,7 +28,7 @@ class CouchDBHttpResponsesPlugin < Scout::Plugin
       end
     else
       http_status_codes.each do |status_code|
-        key = "httpd_status_codes_#{status_code}_sum".to_sym
+        key = "httpd_status_codes_#{status_code}_count".to_sym
         response = JSON.parse(Net::HTTP.get(URI.parse(base_url + "_stats/httpd_status_codes/#{status_code}")))
         count = response['httpd_status_codes'][status_code].ergo['current'] || 0
         report(key => count - (memory(key) || 0))
