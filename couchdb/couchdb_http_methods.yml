@@ -3,10 +3,10 @@ metadata:
     label: Total GET requests
     precision: "0"
   httpd_request_methods_GET_mean:
-    label: Mean GET requests/second
+    label: Mean GET requests
     units: /sec
   httpd_request_methods_GET_max:
-    label: Max GET requests/second
+    label: Max GET requests
     units: /sec
   httpd_request_methods_GET_stddev:
     label: GET request standard deviation
@@ -14,10 +14,10 @@ metadata:
     label: Total POST requests
     precision: "0"
   httpd_request_methods_POST_mean:
-    label: Mean POST requests/second
+    label: Mean POST requests
     units: /sec
   httpd_request_methods_POST_max:
-    label: Max POST requests/second
+    label: Max POST requests
     units: /sec
   httpd_request_methods_POST_stddev:
     label: POST request standard deviation
@@ -25,10 +25,10 @@ metadata:
     label: Total PUT requests
     precision: "0"
   httpd_request_methods_PUT_mean:
-    label: Mean PUT requests/second
+    label: Mean PUT requests
     units: /sec
   httpd_request_methods_PUT_max:
-    label: Max PUT requests/second
+    label: Max PUT requests
     units: /sec
   httpd_request_methods_PUT_stddev:
     label: PUT request standard deviation
@@ -36,10 +36,10 @@ metadata:
     label: Total DELETE requests
     precision: "0"
   httpd_request_methods_DELETE_mean:
-    label: Mean DELETE requests/second
+    label: Mean DELETE requests
     units: /sec
   httpd_request_methods_DELETE_max:
-    label: Max DELETE requests/second
+    label: Max DELETE requests
     units: /sec
   httpd_request_methods_DELETE_stddev:
     label: DELETE request standard deviation
@@ -47,10 +47,10 @@ metadata:
     label: Total HEAD requests
     precision: "0"
   httpd_request_methods_HEAD_mean:
-    label: Mean HEAD requests/second
+    label: Mean HEAD requests
     units: /sec
   httpd_request_methods_HEAD_max:
-    label: Max HEAD requests/second
+    label: Max HEAD requests
     units: /sec
   httpd_request_methods_HEAD_stddev:
     label: HEAD request standard deviation
