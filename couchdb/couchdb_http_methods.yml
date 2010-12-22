@@ -10,3 +10,47 @@ metadata:
     units: requests/sec
   httpd_request_methods_GET_stddev:
     label: GET request standard deviation
+  httpd_request_methods_POST_sum:
+    label: Total POST requests
+    units: requests
+  httpd_request_methods_POST_mean:
+    label: Mean POST requests/second
+    units: requests/sec
+  httpd_request_methods_POST_max:
+    label: Max POST requests/second
+    units: requests/sec
+  httpd_request_methods_POST_stddev:
+    label: POST request standard deviation
+  httpd_request_methods_PUT_sum:
+    label: Total PUT requests
+    units: requests
+  httpd_request_methods_PUT_mean:
+    label: Mean PUT requests/second
+    units: requests/sec
+  httpd_request_methods_PUT_max:
+    label: Max PUT requests/second
+    units: requests/sec
+  httpd_request_methods_PUT_stddev:
+    label: PUT request standard deviation
+  httpd_request_methods_DELETE_sum:
+    label: Total DELETE requests
+    units: requests
+  httpd_request_methods_DELETE_mean:
+    label: Mean DELETE requests/second
+    units: requests/sec
+  httpd_request_methods_DELETE_max:
+    label: Max DELETE requests/second
+    units: requests/sec
+  httpd_request_methods_DELETE_stddev:
+    label: DELETE request standard deviation
+  httpd_request_methods_HEAD_sum:
+    label: Total HEAD requests
+    units: requests
+  httpd_request_methods_HEAD_mean:
+    label: Mean HEAD requests/second
+    units: requests/sec
+  httpd_request_methods_HEAD_max:
+    label: Max HEAD requests/second
+    units: requests/sec
+  httpd_request_methods_HEAD_stddev:
+    label: HEAD request standard deviation
