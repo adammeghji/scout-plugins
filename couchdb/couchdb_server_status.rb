@@ -21,29 +21,34 @@ class CouchDBServerStatusPlugin < Scout::Plugin
     version = response['version']
     report(:version => version)
 
+    metrics = %w{database_reads database_writes}
+
     if version.to_f >= 0.11
       stats = %w{mean max min stddev}
       response = JSON.parse(Net::HTTP.get(URI.parse(base_url + "_stats/couchdb/request_time?range=#{option(:stats_range)}")))
       stats.each { |stat| report("request_time_#{stat}".to_sym => response['couchdb']['request_time'][stat]) }
 
       stats = %w{sum mean max stddev}
-      response = JSON.parse(Net::HTTP.get(URI.parse(base_url + "_stats/couchdb/database_reads?range=#{option(:stats_range)}")))
-      stats.each { |stat| report("database_reads_#{stat}".to_sym => response['couchdb']['database_reads'].ergo[stat] || 0) }
-
-      response = JSON.parse(Net::HTTP.get(URI.parse(base_url + "_stats/couchdb/database_writes?range=#{option(:stats_range)}")))
-      stats.each { |stat| report("database_writes_#{stat}".to_sym => response['couchdb']['database_writes'].ergo[stat] || 0) }
+      metrics.each do |metric|
+        response = JSON.parse(Net::HTTP.get(URI.parse(base_url + "_stats/couchdb/#{metric}?range=#{option(:stats_range)}")))
+        stats.each { |stat| report("#{metric}_#{stat}".to_sym => response['couchdb'][metric].ergo[stat] || 0) }
+      end
     else
-      key = "database_reads_sum".to_sym
-      response = JSON.parse(Net::HTTP.get(URI.parse(base_url + "_stats/couchdb/database_reads")))
-      count = response['couchdb']['database_reads'].ergo['current'] || 0
-      report(key => count - (memory(key) || 0))
-      remember(key, count)
+      now = Time.now.to_i
+      seconds_since_last_run = now - (memory(:last_run_time) || 0)
+      remember(:last_run_time, now)
 
-      key = "database_writes_sum".to_sym
-      response = JSON.parse(Net::HTTP.get(URI.parse(base_url + "_stats/couchdb/database_writes")))
-      count = response['couchdb']['database_writes'].ergo['current'] || 0
-      report(key => count - (memory(key) || 0))
-      remember(key, count)
+      metrics.each do |metric|
+        key = "#{metric}_sum".to_sym
+        response = JSON.parse(Net::HTTP.get(URI.parse(base_url + "_stats/couchdb/#{metric}")))
+        count = response['couchdb'][metric].ergo['current'] || 0
+        value = count - (memory(key) || 0)
+        report(key => value)
+        remember(key, count)
+
+        key = "#{metric}_mean".to_sym
+        report(key => value/seconds_since_last_run)
+      end
     end
   end
 end
