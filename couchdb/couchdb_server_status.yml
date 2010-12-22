@@ -15,7 +15,7 @@ metadata:
   database_reads_sum:
     label: Database read count
     units: reads
-    precision: "1"
+    precision: "0"
   database_reads_mean:
     label: Mean database read count/second
     units: reads/second
@@ -29,7 +29,7 @@ metadata:
   database_writes_sum:
     label: Database write count
     units: writes
-    precision: "1"
+    precision: "0"
   database_writes_mean:
     label: Mean database write count/second
     units: writes/second

@@ -2,6 +2,7 @@ metadata:
   requests_sum:
     label: Total HTTP requests
     units: requests
+    precision: "0"
   requests_mean:
     label: Mean HTTP requests/second
     units: requests/sec
@@ -13,6 +14,7 @@ metadata:
   bulk_requests_sum:
     label: Total bulk HTTP requests
     units: requests
+    precision: "0"
   bulk_requests_mean:
     label: Mean bulk HTTP requests/second
     units: requests/sec
@@ -24,6 +26,7 @@ metadata:
   view_reads_sum:
     label: Total view read requests
     units: requests
+    precision: "0"
   view_reads_mean:
     label: Mean view read requests/second
     units: requests/sec
@@ -34,3 +37,4 @@ metadata:
     label: View read requests standard deviation
   clients_requesting_changes:
     label: Number of clients requesting changes
+    precision: "0"

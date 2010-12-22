@@ -2,15 +2,19 @@ metadata:
   doc_count:
     label: Documents
     units: documents
+    precision: "0"
   doc_del_count:
     label: Deleted documents
     units: documents
+    precision: "0"
   disk_size:
     label: Database size
     units: bytes
   purge_seq:
     label: Purge operations
     units: purge operations
+    precision: "0"
   update_seq:
     label: Update operations
     units: updates
+    precision: "0"
