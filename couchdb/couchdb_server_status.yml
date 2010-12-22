@@ -1,0 +1,20 @@
+metadata:
+  version:
+    label: CouchDB Version
+  database_reads_sum:
+    label: Database read count
+  database_reads_mean:
+    label: Mean database read count
+  database_reads_max:
+    label: Max database read count
+  database_reads_stddev:
+    label: Database read count standard deviation
+  database_writes_sum:
+    label: Database write count
+  database_writes_mean:
+    label: Mean database write count
+  database_writes_max:
+    label: Max database write count
+  database_writes_stddev:
+    label: Database write count standard deviation
+
