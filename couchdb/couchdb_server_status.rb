@@ -30,7 +30,7 @@ class CouchDBServerStatusPlugin < Scout::Plugin
       stats.each { |stat| report("request_time_#{stat}".to_sym => response['couchdb']['request_time'][stat]) }
     else
       response = JSON.parse(Net::HTTP.get(URI.parse(base_url + "_stats/httpd/requests")))
-      requests_count = response['httpd']['requests'].ergo['count'] || 0
+      requests_count = response['httpd']['requests'].ergo['current'] || 0
       report(:requests_sum => requests_count - (memory(:requests_sum) || 0))
       remember(:requests_sum, requests_count)
     end

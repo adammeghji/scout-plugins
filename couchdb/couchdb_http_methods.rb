@@ -31,7 +31,7 @@ class CouchDBHttpMethodsPlugin < Scout::Plugin
       http_methods.each do |http_method|
         key = "requests_sum_#{http_method}".to_sym
         response = JSON.parse(Net::HTTP.get(URI.parse(base_url + "_stats/httpd_request_methods/#{http_method}")))
-        count = response['httpd_request_methods'][http_method].ergo['count'] || 0
+        count = response['httpd_request_methods'][http_method].ergo['current'] || 0
         report(key => count - (memory(key) || 0))
         remember(key, count)
       end
