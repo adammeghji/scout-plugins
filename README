@@ -4,6 +4,10 @@ The following plugins are generally applicable, that is they monitor services or
 libraries that are open source or publically available. Feel free to modify this
 code and submit patches/pull requests back.
 
+  CouchDB Stats
+  ==========================
+  Various stats for Apache's CouchDB database.
+
   Reliable Msg Stats
   ==========================
   This plugin generates instantaneous stats on the reliable message service. Currently
