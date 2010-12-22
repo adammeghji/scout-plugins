@@ -47,7 +47,7 @@ class CouchDBServerStatusPlugin < Scout::Plugin
         remember(key, count)
 
         key = "#{metric}_mean".to_sym
-        report(key => value/seconds_since_last_run)
+        report(key => value/seconds_since_last_run.to_f)
       end
     end
   end

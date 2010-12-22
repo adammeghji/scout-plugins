@@ -28,12 +28,20 @@ class CouchDBHttpMethodsPlugin < Scout::Plugin
         stats.each { |stat| report("httpd_request_methods_#{http_method}_#{stat}".to_sym => response['httpd_request_methods'][http_method].ergo[stat] || 0) }
       end
     else
+      now = Time.now.to_i
+      seconds_since_last_run = now - (memory(:last_run_time) || 0)
+      remember(:last_run_time, now)
+
       http_methods.each do |http_method|
         key = "httpd_request_methods_#{http_method}_sum".to_sym
         response = JSON.parse(Net::HTTP.get(URI.parse(base_url + "_stats/httpd_request_methods/#{http_method}")))
         count = response['httpd_request_methods'][http_method].ergo['current'] || 0
-        report(key => count - (memory(key) || 0))
+        value = count - (memory(key) || 0)
+        report(key => value)
         remember(key, count)
+
+        key = "httpd_request_methods_#{http_method}_mean".to_sym
+        report(key => value/seconds_since_last_run.to_f)
       end
     end
   end
