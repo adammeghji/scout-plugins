@@ -6,7 +6,7 @@ metadata:
     label: Number of deleted documents
     units: documents
   disk_size:
-    label: Size of the data as stored on the disk. Views indexes are not included in the calculation. 
+    label: Size of the data as stored on the disk
     units: bytes
   purge_seq:
     label: The number of purge operations on the database 
