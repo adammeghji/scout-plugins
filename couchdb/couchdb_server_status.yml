@@ -14,7 +14,6 @@ metadata:
     label: Request time standard deviation
   database_reads_sum:
     label: Database read count
-    units: reads
     precision: "0"
   database_reads_mean:
     label: Mean database read count/second
@@ -28,7 +27,6 @@ metadata:
     label: Database read count standard deviation
   database_writes_sum:
     label: Database write count
-    units: writes
     precision: "0"
   database_writes_mean:
     label: Mean database write count/second

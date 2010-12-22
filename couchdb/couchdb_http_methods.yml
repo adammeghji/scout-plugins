@@ -1,7 +1,6 @@
 metadata:
   httpd_request_methods_GET_sum:
     label: Total GET requests
-    units: requests
     precision: "0"
   httpd_request_methods_GET_mean:
     label: Mean GET requests/second
@@ -13,7 +12,6 @@ metadata:
     label: GET request standard deviation
   httpd_request_methods_POST_sum:
     label: Total POST requests
-    units: requests
     precision: "0"
   httpd_request_methods_POST_mean:
     label: Mean POST requests/second
@@ -25,7 +23,6 @@ metadata:
     label: POST request standard deviation
   httpd_request_methods_PUT_sum:
     label: Total PUT requests
-    units: requests
     precision: "0"
   httpd_request_methods_PUT_mean:
     label: Mean PUT requests/second
@@ -37,7 +34,6 @@ metadata:
     label: PUT request standard deviation
   httpd_request_methods_DELETE_sum:
     label: Total DELETE requests
-    units: requests
     precision: "0"
   httpd_request_methods_DELETE_mean:
     label: Mean DELETE requests/second
@@ -49,7 +45,6 @@ metadata:
     label: DELETE request standard deviation
   httpd_request_methods_HEAD_sum:
     label: Total HEAD requests
-    units: requests
     precision: "0"
   httpd_request_methods_HEAD_mean:
     label: Mean HEAD requests/second
