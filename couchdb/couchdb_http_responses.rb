@@ -27,12 +27,20 @@ class CouchDBHttpResponsesPlugin < Scout::Plugin
         report("httpd_status_codes_#{status_code}_count".to_sym => response['httpd_status_codes'][status_code].ergo['sum'] || 0)
       end
     else
+      now = Time.now.to_i
+      seconds_since_last_run = now - (memory(:last_run_time) || 0)
+      remember(:last_run_time, now)
+
       http_status_codes.each do |status_code|
         key = "httpd_status_codes_#{status_code}_count".to_sym
         response = JSON.parse(Net::HTTP.get(URI.parse(base_url + "_stats/httpd_status_codes/#{status_code}")))
         count = response['httpd_status_codes'][status_code].ergo['current'] || 0
-        report(key => count - (memory(key) || 0))
+        value = count - (memory(key) || 0)
+        report(key => value)
         remember(key, count)
+
+        key = "httpd_status_codes_#{status_code}_mean".to_sym
+        report(key => value/seconds_since_last_run.to_f)
       end
     end
   end
