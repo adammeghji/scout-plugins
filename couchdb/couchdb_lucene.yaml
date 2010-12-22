@@ -1,0 +1,10 @@
+metadata:
+  doc_count:
+    label: Number of documents in the lucene index
+    units: documents
+  doc_del_count:
+    label: Number of deleted documents in the lucene index
+    units: documents
+  disk_size:
+    label: Size of the lucene index as stored on the disk
+    units: bytes

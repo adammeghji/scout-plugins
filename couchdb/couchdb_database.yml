@@ -12,5 +12,5 @@ metadata:
     label: The number of purge operations on the database 
     units: purge operations
   update_seq:
-    label: The current number of updates to the database.
+    label: The current number of updates to the database
     units: updates
