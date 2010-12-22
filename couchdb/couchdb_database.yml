@@ -1,16 +1,16 @@
 metadata:
   doc_count:
-    label: Number of documents in the database
+    label: Documents
     units: documents
   doc_del_count:
-    label: Number of deleted documents
+    label: Deleted documents
     units: documents
   disk_size:
-    label: Size of the data as stored on the disk
+    label: Database size
     units: bytes
   purge_seq:
-    label: The number of purge operations on the database 
+    label: Purge operations
     units: purge operations
   update_seq:
-    label: The current number of updates to the database
+    label: Update operations
     units: updates
