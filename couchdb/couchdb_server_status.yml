@@ -17,11 +17,11 @@ metadata:
     precision: "0"
   database_reads_mean:
     label: Mean database read count/second
-    units: reads/second
+    units: /sec
     precision: "1"
   database_reads_max:
     label: Max database read count/second
-    units: reads/second
+    units: /sec
     precision: "1"
   database_reads_stddev:
     label: Database read count standard deviation
@@ -30,11 +30,11 @@ metadata:
     precision: "0"
   database_writes_mean:
     label: Mean database write count/second
-    units: writes/second
+    units: /sec
     precision: "1"
   database_writes_max:
     label: Max database write count/second
-    units: writes/second
+    units: /sec
     precision: "1"
   database_writes_stddev:
     label: Database write count standard deviation

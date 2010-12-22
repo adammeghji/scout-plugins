@@ -4,10 +4,10 @@ metadata:
     precision: "0"
   requests_mean:
     label: Mean HTTP requests/second
-    units: requests/sec
+    units: /sec
   requests_max:
     label: Max HTTP requests/second
-    units: requests/sec
+    units: /sec
   requests_stddev:
     label: HTTP requests standard deviation
   bulk_requests_sum:
@@ -15,10 +15,10 @@ metadata:
     precision: "0"
   bulk_requests_mean:
     label: Mean bulk HTTP requests/second
-    units: requests/sec
+    units: /sec
   bulk_requests_max:
     label: Max bulk HTTP requests/second
-    units: requests/sec
+    units: /sec
   bulk_requests_stddev:
     label: Bulk HTTP requests standard deviation
   view_reads_sum:
@@ -26,10 +26,10 @@ metadata:
     precision: "0"
   view_reads_mean:
     label: Mean view read requests/second
-    units: requests/sec
+    units: /sec
   view_reads_max:
     label: Max view read requests/second
-    units: requests/sec
+    units: /sec
   view_reads_stddev:
     label: View read requests standard deviation
   clients_requesting_changes:
