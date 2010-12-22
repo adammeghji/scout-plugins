@@ -33,12 +33,20 @@ class CouchDBHttpStatsPlugin < Scout::Plugin
       response = JSON.parse(Net::HTTP.get(URI.parse(base_url + "_stats/httpd/clients_requesting_changes?range=#{option(:stats_range)}")))
       report(:clients_requesting_changes => response['httpd']['clients_requesting_changes'].ergo['current'] || 0)
     else
+      now = Time.now.to_i
+      seconds_since_last_run = now - (memory(:last_run_time) || 0)
+      remember(:last_run_time, now)
+
       metrics.each do |metric|
         key = "#{metric}_sum".to_sym
         response = JSON.parse(Net::HTTP.get(URI.parse(base_url + "_stats/httpd/#{metric}")))
         count = response['httpd'][metric].ergo['current'] || 0
-        report(key => count - (memory(key) || 0))
+        value = count - (memory(key) || 0)
+        report(key => value)
         remember(key, count)
+
+        key = "#{metric}_mean".to_sym
+        report(key => value/seconds_since_last_run.to_f)
       end
 
       key = :clients_requesting_changes
