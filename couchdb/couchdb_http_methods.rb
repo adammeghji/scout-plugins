@@ -8,7 +8,7 @@ class CouchDBHttpMethodsPlugin < Scout::Plugin
       label: The host that CouchDB is running on
       default: http://127.0.0.1
     stats_range:
-      label: The time range to fetch stats for in seconds (60, 300, or 900)
+      label: The time range to fetch stats for in seconds (60, 300, or 900).  Used for CouchDB 0.11 and higher.
       default: 300
   EOS
 
