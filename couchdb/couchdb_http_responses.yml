@@ -1,0 +1,40 @@
+metadata:
+  httpd_status_codes_200_count:
+    label: Total requests that responded with a 200
+    units: requests
+  httpd_status_codes_201_count:
+    label: Total requests that responded with a 201
+    units: requests
+  httpd_status_codes_202_count:
+    label: Total requests that responded with a 202
+    units: requests
+  httpd_status_codes_301_count:
+    label: Total requests that responded with a 301
+    units: requests
+  httpd_status_codes_304_count:
+    label: Total requests that responded with a 304
+    units: requests
+  httpd_status_codes_400_count:
+    label: Total requests that responded with a 400
+    units: requests
+  httpd_status_codes_401_count:
+    label: Total requests that responded with a 401
+    units: requests
+  httpd_status_codes_403_count:
+    label: Total requests that responded with a 403
+    units: requests
+  httpd_status_codes_404_count:
+    label: Total requests that responded with a 404
+    units: requests
+  httpd_status_codes_405_count:
+    label: Total requests that responded with a 405
+    units: requests
+  httpd_status_codes_409_count:
+    label: Total requests that responded with a 409
+    units: requests
+  httpd_status_codes_412_count:
+    label: Total requests that responded with a 412
+    units: requests
+  httpd_status_codes_500_count:
+    label: Total requests that responded with a 500
+    units: requests
