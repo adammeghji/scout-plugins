@@ -22,7 +22,7 @@ class CouchDBServerStatusPlugin < Scout::Plugin
     report(:version => version)
 
     if version.to_f >= 0.11
-      stats = %w{count mean max stddev}
+      stats = %w{sum mean max stddev}
       response = JSON.parse(Net::HTTP.get(URI.parse(base_url + "_stats/httpd/requests?range=#{option(:stats_range)}")))
       stats.each { |stat| report("requests_#{stat}".to_sym => response['httpd']['requests'].ergo[stat]) }
 
@@ -31,8 +31,8 @@ class CouchDBServerStatusPlugin < Scout::Plugin
     else
       response = JSON.parse(Net::HTTP.get(URI.parse(base_url + "_stats/httpd/requests")))
       requests_count = response['httpd']['requests'].ergo['count'] || 0
-      report(:requests_count => requests_count - (memory(:requests_count) || 0))
-      remember(:requests_count, requests_count)
+      report(:requests_sum => requests_count - (memory(:requests_sum) || 0))
+      remember(:requests_sum, requests_count)
     end
   end
 
