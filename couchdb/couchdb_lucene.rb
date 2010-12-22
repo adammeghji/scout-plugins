@@ -25,6 +25,6 @@ class CouchDBLucenePlugin < Scout::Plugin
   end
 
   def b_to_mb(bytes)
-    bytes && bytes / 1024 / 1024
+    bytes && bytes.to_f / 1024 / 1024
   end
 end
