@@ -1,3 +1,27 @@
+metadata:
+  CM:
+    label: Carrier Lookups
+    precision: "0"
+  MO:
+    label: MOs
+    precision: "0"
+  FU:
+    label: MOs (blocked)
+    precision: "0"
+  'Total MTs':
+    label: MTs
+    precision: "0"
+  'Success MTs':
+    label: MTs (successful)
+    precision: "0"
+  'Failed MTs':
+    label: MTs (failed)
+    precision: "0"
+  'Average Aggregator Time':
+    label: Response Time
+    precision: "2"
+    units: s
+
 options:
   user:
     name: MySQL username
