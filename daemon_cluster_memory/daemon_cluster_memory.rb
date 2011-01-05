@@ -14,8 +14,9 @@ class DaemonClusterMemory < Scout::Plugin
       return
     end
 
+    process_name = option('process_name')
     report_data = {}
-    Dir[File.join(pid_dir, '*.pid')].each do |pid_file|
+    Dir[File.join(pid_dir, "#{process_name}*.pid")].each do |pid_file|
       process = pid_file.split('_')[1].split('.')[0]
       pid = File.read(pid_file).chomp
 

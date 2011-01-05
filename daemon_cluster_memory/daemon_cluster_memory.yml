@@ -6,3 +6,7 @@ options:
   pid_dir:
     name: PID Directory
     notes: The directory where the daemon pid files are stored.
+  process_name:
+    name: Process Name
+    notes: The name of the daemon process to monitor.
+    default: 
