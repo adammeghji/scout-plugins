@@ -23,7 +23,7 @@ class DaemonClusterMemory < Scout::Plugin
       ps_line = ps_output.detect {|line| line.split[pid_index] == pid}
       memory = ps_line ? Float(ps_line.split[memory_index]) / 1024 : nil
 
-      p_name = #{process_name} ||= "Process"
+      p_name = process_name ||= "Process"
       report_data["#{p_name} #{process}"] = memory
     end
 
