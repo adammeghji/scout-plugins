@@ -17,13 +17,14 @@ class DaemonClusterMemory < Scout::Plugin
     process_name = option('process_name')
     report_data = {}
     Dir[File.join(pid_dir, "#{process_name}*.pid")].each do |pid_file|
-      process = pid_file.split('_')[1].split('.')[0]
+      process = reverse.split('_')[0].split('.')[1].reverse
       pid = File.read(pid_file).chomp
 
       ps_line = ps_output.detect {|line| line.split[pid_index] == pid}
       memory = ps_line ? Float(ps_line.split[memory_index]) / 1024 : nil
 
-      report_data["Process #{process}"] = memory
+      p_name = #{process_name} ||= "Process"
+      report_data["#{p_name} #{process}"] = memory
     end
 
     report(report_data)
