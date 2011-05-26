@@ -4,6 +4,7 @@
 #
 # MT:: The number of Mobile Terminated (aka, outgoing) messages sent.
 # MO:: The number of Mobile Originated (aka, incoming) messages recevied.
+# CM:: The number of Carrier lookups recevied.
 # Failed MTs::
 #      The number of MTs that were not sent due to a failure
 #      from the aggregator.
@@ -38,11 +39,12 @@ class SmsStats < Scout::Plugin
       results = mysql.query <<-SQL
         select sum(if(message_type='MT' and error_code is null,1,0)) as mt,
                sum(if(message_type='MO',1,0)) as mo,
+               sum(if(message_type='CM',1,0)) as cm,
                sum(if(message_type = 'MT' and error_code is not null,1,0)) as failed_mt,
                avg(transaction_time) as avg_transaction_time,
                avg(aggregator_time) as avg_aggregator_time
           from recent_messages
-         where created_at > '#{last_run.utc.strftime(DB_FORMAT)}' 
+         where created_at > '#{last_run.utc.strftime(DB_FORMAT)}'
          and scheduled_message_id is #{scheduled} null
       SQL
 
@@ -50,7 +52,8 @@ class SmsStats < Scout::Plugin
         report(:MT => row['mt'] || 0, :MO => row['mo'] || 0,
                'Failed MTs' => row['failed_mt'] || 0,
                'Average Transaction Time' => row['avg_transaction_time'],
-               'Average Aggregator Time' => row['avg_aggregator_time'])
+               'Average Aggregator Time' => row['avg_aggregator_time'],
+               :CM => row['cm'] || 0)
       end
     end
 
