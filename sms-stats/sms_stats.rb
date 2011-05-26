@@ -1,4 +1,4 @@
-# Custom monitoring of Interactive Mediums SMS system.
+# Custom monitoring of Singal's SMS system.
 #
 # The following statistics are calculated (for the last five minutes of traffic):
 #
@@ -18,6 +18,32 @@
 #      The average latency (in seconds) that the aggregator took to
 #      process the outgoing MT.
 class SmsStats < Scout::Plugin
+  OPTIONS = <<-EOS
+  user:
+    name: MySQL username
+    notes: Specify the username to connect with!
+    default: root
+  password:
+    name: MySQL password
+    notes: Specify the password to connect with!
+  host:
+    name: MySQL host
+    notes: Specify something other than 'localhost' to connect via TCP!
+    default: localhost
+  port:
+    name: MySQL port
+    notes: Specify the port to connect to MySQL with (if nonstandard)!
+  socket:
+    name: MySQL socket
+    notes: Specify the location of the MySQL socket
+  database:
+    name: Database name
+    notes: Specify the name of the database that has the messaging tables
+  scheduled_messages:
+    name:  Scheduled messages?
+    notes: Leave blank to report on non scheduled messages. Provide a value to report on scheduled messages
+  EOS
+
   needs 'mysql'
 
   DB_FORMAT = '%Y-%m-%d %H:%M:%S'
