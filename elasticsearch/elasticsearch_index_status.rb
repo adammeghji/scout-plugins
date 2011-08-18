@@ -26,6 +26,10 @@ class ElasticsearchIndexStatusPlugin < Scout::Plugin
     base_url = "#{option(:elasticsearch_host)}:#{option(:elasticsearch_port)}/#{index_name}/_status"
     response = JSON.parse(Net::HTTP.get(URI.parse(base_url)))
 
+    if response['error'] && response['error'] =~ /IndexMissingException/
+      return error("No index found with the specified name", "No index could be found with the specified name.\n\nIndex Name: #{option(:index_name)}")
+    end
+
     report(:primary_size => b_to_mb(response['indices'][index_name]['index']['primary_size_in_bytes']) || 0)
     report(:size => b_to_mb(response['indices'][index_name]['index']['size_in_bytes']) || 0)
     report(:num_docs => response['indices'][index_name]['docs']['num_docs'] || 0)
