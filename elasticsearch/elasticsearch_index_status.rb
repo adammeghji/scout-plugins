@@ -1,4 +1,5 @@
-class ElasticSearchIndexStatusPlugin < Scout::Plugin
+class ElasticsearchIndexStatusPlugin < Scout::Plugin
+
   OPTIONS = <<-EOS
     elasticsearch_host:
       default: http://127.0.0.1
