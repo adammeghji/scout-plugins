@@ -29,6 +29,7 @@ class ElasticsearchIndexStatusPlugin < Scout::Plugin
     report(:primary_size => b_to_mb(response['indices'][index_name]['index']['primary_size_in_bytes']) || 0)
     report(:size => b_to_mb(response['indices'][index_name]['index']['size_in_bytes']) || 0)
     report(:num_docs => response['indices'][index_name]['docs']['num_docs'] || 0)
+
   rescue OpenURI::HTTPError
     error("Stats URL not found", "Please ensure the base url for elasticsearch index stats is correct. Current URL: \n\n#{base_url}")
   rescue SocketError

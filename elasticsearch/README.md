@@ -5,4 +5,5 @@ This directory contains a series of [Scout](http://scoutapp.com) plugins that ca
 ## The Plugins
 
 * **ElasticsearchIndexStatusPlugin** - Reports stats on an elasticsearch index, including index size, number of documents, etc
+* **ElasticsearchClusterStatusPlugin** - Reports stats on an elasticsearch cluster, including health (green, yellow, red), number of nodes, number of shards, etc
 
